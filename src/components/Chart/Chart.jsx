@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { fetchDailyData } from "../../api";
-import { Line, Bar } from 'react-chartjs-2';
+import { Line, Bar } from "react-chartjs-2";
 import styles from "./Chart.module.css";
-const Chart = ({data,country}) => {
+const Chart = ({ data, country }) => {
   // const { dailyData, setDailyData  } = useState({});
   //console.log('dat',useState([]))
   const [dailyData, setDailyData] = useState([]);
@@ -16,13 +16,11 @@ const Chart = ({data,country}) => {
     fetchAPI();
   }, []);
 
-  const lineChart = (
-    dailyData[0] ? (
+  const lineChart = dailyData[0] ? (
     <Line
-      data=
-      {{
+      data={{
         labels: dailyData.map(({ data }) => data),
-        datasets : [
+        datasets: [
           {
             data: dailyData.map(({ confirmed }) => confirmed),
             label: "Infected",
@@ -39,14 +37,13 @@ const Chart = ({data,country}) => {
         ],
       }}
     />
-  ) : null
-  );
+  ) : null;
 
   return (
-  <div className={styles.container}>
-    {lineChart}
-    <p>haha</p>
-    <h1>hello sam</h1>
+    <div className={styles.container}>
+      {lineChart}
+      <p>haha</p>
+      <h1>hello sam</h1>
     </div>
   );
 };
